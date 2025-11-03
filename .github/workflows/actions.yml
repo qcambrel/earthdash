@@ -1,0 +1,35 @@
+name: EarthDash Actions
+run-name: Build, test, and deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Set up Mamba environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          activate-environment: earth
+          init-shell: bash
+          cache-downloads: true
+          cache-environment: true
+          post-cleanup: "all"
+      - name: Install test dependencies
+        run: |
+          pip install pytest
+          pip install moto
+      - name: Run tests
+        run: |
+          pytest -q
