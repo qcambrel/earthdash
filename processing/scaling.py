@@ -1,6 +1,10 @@
 import numpy as np
 
-def scale(image: np.ndarray, low: float = None, high: float = None):
+def scale(image: np.ndarray, low: float = None, high: float = None) -> np.ndarray:
+    """
+    Scales an image to the range [0, 1].
+    Scaling alpha channels enables intensity based alpha blending.
+    """
     if low is None:
         low = np.min(image)
     if high is None:
