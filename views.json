@@ -1,0 +1,113 @@
+{
+  "northamerica_proj": {
+    "center": [-75, 20.0],
+    "proj": 4
+  },
+  "westpacific_proj": {
+    "center": [140, 17.5],
+    "proj": 4
+  },
+  "goeseast_proj": {
+    "center": [-75, 0.0],
+    "proj": 3
+  },
+  "goeswest_proj": {
+    "center": [-135, 0.0],
+    "proj": 3
+  },
+  "meteosat8_proj": {
+    "center": [41.5, 0.0],
+    "proj": 3
+  },
+  "meteosat10_proj": {
+    "center": [0.0, 0.0],
+    "proj": 3
+  },
+  "himawari_proj": {
+    "center": [140.7, 0.0],
+    "proj": 3
+  },
+  "nh_proj": {
+    "center": [-90, 80.0],
+    "proj": 4
+  },
+  "sh_proj": {
+    "center": [-90, -80.0],
+    "proj": 4
+  },
+  "usa_mapset": {
+    "extent": [-128.0, -64.0, 23.5, 49.0],
+    "center": [-99.0, 30.0],
+    "proj": 1
+  },
+  "centralusa_mapset": {
+    "extent": [-110.25, -69.75, 30.0, 45.0],
+    "center": [-90.0, 37.5],
+    "proj": 1
+  },
+  "midatlantic_mapset": {
+    "extent": [-88.25, -69.75, 34.5, 41.5],
+    "center": [-79.0, 32.5],
+    "proj": 2
+  },
+  "maryland_mapset": {
+    "extent": [-80.5, -74.5, 37.5, 39.75],
+    "center": [-77.5, 38.625],
+    "proj": 2
+  },
+  "northatlantic_mapset": {
+    "extent": [-100.0, 0.0, 5.25, 47.75],
+    "center": [-50.0, 20.0],
+    "proj": 2
+  },
+  "europe_mapset": {
+    "extent": [-40.0, 80.0, 20.0, 65.0],
+    "center": [20.0, 30.0],
+    "proj": 2
+  },
+  "asia_mapset": {
+    "extent": [60.0, 180.0, 0.0, 52.5],
+    "center": [120.0, 10.0],
+    "proj": 2
+  },
+  "australia_mapset": {
+    "extent": [60.0, 180.0, -45.0, 10.0],
+    "center": [120.0, -10.0],
+    "proj": 2
+  },
+  "africa_mapset": {
+    "extent": [-50.0, 80.0, -30.0, 35.0],
+    "center": [0.0, 0.0],
+    "proj": 2
+  },
+  "southamerica_mapset": {
+    "extent": [-135.0, -5.0, -45.0, 15.0],
+    "center": [-70.0, -10.0],
+    "proj": 2
+  },
+  "northamerica_mapset": {
+    "extent": [-150.0, -30.0, 17.5, 65.0],
+    "center": [-90.0, 20.0],
+    "proj": 2
+  },
+  "epacific_mapset": {
+    "extent": [-180.0, -15.0, -6.5, 65.0],
+    "center": [-90.0, 20.0],
+    "proj": 2
+  },
+  "indianocean_mapset": {
+    "extent": [28.0, 132.0, -25.0, 25.0],
+    "center": [80.0, 0.0],
+    "proj": 2
+  },
+  "westatlantic_mapset": {
+    "extent": [-105.0, -35.0, 8.5, 39.75],
+    "center": [-72.5, 10.0],
+    "proj": 2
+  },
+  "globe": {
+    "extent": [-180.0, 180.0, -90.0, 90.0],
+    "center": [0.0, 0.0],
+    "proj": 0
+  }
+}

@@ -1,4 +1,5 @@
-.env
+features/cache
+features/cache.zip
 features/__pycache__
 metrics/__pycache__
 plotting/__pycache__
@@ -6,6 +7,8 @@ processing/__pycache__
 tests/__pycache__
 utils/__pycache__
 video/__pycache__
+.env
 .pytest_cache
 tests/.pytest_cache
 .DS_Store
+*.ipynb
