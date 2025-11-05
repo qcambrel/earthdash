@@ -68,7 +68,7 @@ def cache_background(cache_dir: str, context: BackgroundContext) -> str:
             plt.close()
             raise ValueError(f"Unknown background: {context.background_name}")
     
-    save_dir = os.path.join(cache_dir, f"{context.tag}-{context.background_name}.png")
+    save_dir = os.path.join(cache_dir, context.tag, "features", f"{context.background_name}.png")
     plt.axis("off")
     plt.savefig(save_dir, bbox_inches=context.bbox_inches, pad_inches=context.pad_inches)
     plt.close()
@@ -92,6 +92,7 @@ def cache_coastlines(cache_dir: str, temp_dir: str, context: CoastlineContext, c
         ]
         shapefiles = [read_dataframe(shp_path) for shp_path in shp_paths]
         gshhs      = gpd.GeoDataFrame(pd.concat(shapefiles), ignore_index=True)
+        
         with open(f"{cache_dir}/gshss.pkl", "wb") as pkl:
             pickle.dump(gshhs, pkl)
 
@@ -108,7 +109,7 @@ def cache_coastlines(cache_dir: str, temp_dir: str, context: CoastlineContext, c
     ax.add_feature(shore)
     ax.set_extent(context.extent)
 
-    save_dir = os.path.join(cache_dir, f"{context.tag}-gshhs.png")
+    save_dir = os.path.join(cache_dir, context.tag, "features", "gshhs.png")
     plt.axis("off")
     plt.savefig(save_dir, bbox_inches=context.bbox_inches, pad_inches=context.pad_inches, transform=context.transform)
     plt.close()
@@ -150,7 +151,7 @@ def cache_borders(cache_dir: str, temp_dir: str, context: BorderContext) -> str:
     )
     ax.add_feature(border)
 
-    save_dir = os.path.join(cache_dir, f"{context.tag}-borders.png")
+    save_dir = os.path.join(cache_dir, context.tag, "features", "borders.png")
     plt.axis("off")
     plt.savefig(save_dir, bbox_inches=context.bbox_inches, pad_inches=context.pad_inches, transparent=context.transparent)
     plt.close()
