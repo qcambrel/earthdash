@@ -39,7 +39,7 @@ class WindPlotter(Plotter):
         self.bbox_inches = context.bbox_inches
         self.pad_inches = context.pad_inches
 
-    def render(self, cache_dir: str = True):
+    def render(self, cache_dir: str, timestamp: str):
         self.fig = plt.figure(dpi=self.resolution)
         self.ax  = plt.axes(projection=self.projection())
         
@@ -66,8 +66,8 @@ class WindPlotter(Plotter):
         img = Image.open(buffer)
         buffer.close()
 
-        coasts  = os.path(cache_dir, f"{self.tag}-gshss.png")
-        borders = os.path(cache_dir, f"{self.tag}-borders.png")
+        coasts  = os.path(cache_dir, self.tag, "features", "gshss.png")
+        borders = os.path(cache_dir, self.tag, "features", "borders.png")
 
         img2 = Image.open(coasts)
         img3 = Image.open(borders)
@@ -75,7 +75,8 @@ class WindPlotter(Plotter):
         img.paste(img2, mask=img2)
         img.paste(img3, mask=img3)
 
-        img.save(os.path(cache_dir, f"{self.tag}.png"))
+        year, month, day, hour = timestamp.split("-")
+        img.save(os.path(cache_dir, self.tag, "frames", "10-m winds", year, month, day, f"{hour}.png"))
         
 
 class T2MPlotter(Plotter):
