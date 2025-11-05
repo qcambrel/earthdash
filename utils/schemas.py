@@ -98,7 +98,6 @@ class RoadContext(BaseModel):
     transparent: bool | None                  = True
     compress: int | None                      = 9
 
-
 class RegridderContext(BaseModel):
     extent: tuple[float, float, float, float] = (-180, 180, -90, 90)
     method: str | None                        = "conservative"
@@ -106,3 +105,13 @@ class RegridderContext(BaseModel):
     shape_out: tuple[int, int] | None         = None
     reuse_weights: bool | None                = False
     weights_dir: str | None                   = None
+
+class ColormapContext(BaseModel):
+    vmin: float | None              = None
+    vmax: float | None              = None
+    levels: int | np.ndarray | None = None
+    rgb_npy: np.ndarray | None      = None
+    rgb_mpl: str | None             = None
+    filename: str | None            = None
+    target: np.ndarray | None       = None
+    ticks: np.ndarray | None        = None
