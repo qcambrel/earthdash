@@ -11,12 +11,21 @@ class BandpassContext(BaseModel):
     gaussian: bool    = False
 
 class PlotterContext(BaseModel):
-    projection: Type[ccrs.Projection]       = ccrs.PlateCarree
-    transform: Type[ccrs.Projection]        = ccrs.PlateCarree
-    cmap: str | Type[mpl.colors.Colormap]   = "viridis"
-    norm: Type[mpl.colors.Normalize] | None = None
-    vmin: float | None                      = None
-    vmax: float | None                      = None
+    projection: Type[ccrs.Projection]               = ccrs.PlateCarree
+    transform: Type[ccrs.Projection]                = ccrs.PlateCarree
+    tag: str | None                                 = None
+    cmap: str | Type[mpl.colors.Colormap]           = "viridis"
+    norm: Type[mpl.colors.Normalize] | None         = None
+    vmin: float | None                              = None
+    vmax: float | None                              = None
+    interpolation: str | None                       = None
+    extent: tuple[float, float, float, float]       = (-180, 180, -90, 90)
+    origin: str | None                              = "lower"
+    resolution: int | None                          = None
+    limit: tuple[float, float, float, float] | None = None
+    bbox_inches: str | None                         = "tight"
+    pad_inches: float | None                        = 0
+    transparent: bool | None                        = False
 
 class BatchContext(BaseModel):
     fn_args: list[Any] | None        = None

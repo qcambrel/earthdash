@@ -1,4 +1,5 @@
 import os
+import io
 import numpy as np
 from PIL import Image
 import cartopy.crs as ccrs
@@ -23,10 +24,59 @@ class WindPlotter(Plotter):
     is to reflect winds 10 meters above mean sea level.
     """
     def __init__(self, data: np.ndarray, context: PlotterContext):
-        pass
+        self.data = data
+        self.cmap = context.cmap
+        self.norm = context.norm
+        self.origin = context.origin
+        self.interpolation = context.interpolation
+        self.extent = context.extent
+        self.projection = context.projection
+        self.transform = context.transform
+        self.resolution = context.resolution
+        self.limit = context.limit
+        self.tag = context.tag
+        self.transparent = context.transparent
+        self.bbox_inches = context.bbox_inches
+        self.pad_inches = context.pad_inches
 
-    def render(self):
-        pass
+    def render(self, cache_dir: str = True):
+        self.fig = plt.figure(dpi=self.resolution)
+        self.ax  = plt.axes(projection=self.projection())
+        
+        if self.limit:
+            self.ax.set_xlim(self.limit[0], self.limit[1], crs=self.transform())
+            self.ax.set_ylim(self.limit[2], self.limit[3], crs=self.transform())
+        
+        self.ax.imshow(
+            self.data,
+            cmap=self.cmap,
+            norm=self.norm,
+            origin=self.origin,
+            interpolation=self.interpolation,
+            extent=self.extent,
+            transform=self.transform()
+        )
+        
+        buffer = io.BytesIO()
+        plt.savefig(buffer, dpi=self.resolution, bbox_inches=self.bbox_inches, pad_inches=self.pad_inches, transparent=self.transparent)
+        
+        buffer.seek(0)
+        plt.close()
+        
+        img = Image.open(buffer)
+        buffer.close()
+
+        coasts  = os.path(cache_dir, f"{self.tag}-gshss.png")
+        borders = os.path(cache_dir, f"{self.tag}-borders.png")
+
+        img2 = Image.open(coasts)
+        img3 = Image.open(borders)
+
+        img.paste(img2, mask=img2)
+        img.paste(img3, mask=img3)
+
+        img.save(os.path(cache_dir, f"{self.tag}.png"))
+        
 
 class T2MPlotter(Plotter):
     """
