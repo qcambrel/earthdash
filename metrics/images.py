@@ -1,6 +1,8 @@
 import lpips
+import torch
 import numpy as np
 from PIL import Image
+from skimage.metrics import mean_squared_error as mse
 from skimage.metrics import structural_similarity as ssim
 from skimage.metrics import peak_signal_noise_ratio as psnr
 
@@ -23,6 +25,13 @@ def infer_channel_axis(image: np.ndarray) -> int:
 def compute_ssim(image1: Image, image2: Image) -> float:
     """
     Computes the structural similarity index measure between two images.
+
+    Args:
+        image1 (Image): The first image
+        image2 (Image): The second image
+
+    Returns:
+        float: The structural similarity index
     """
     image1 = np.array(image1)
     image2 = np.array(image2)
@@ -42,6 +51,13 @@ def compute_ssim(image1: Image, image2: Image) -> float:
 def compute_psnr(image1: Image, image2: Image) -> float:
     """
     Computes the peak signal to noise ratio between two images.
+
+    Args:
+        image1 (Image): The first image
+        image2 (Image): The second image
+
+    Returns:
+        float: The peak signal to noise ratio
     """
     image1 = np.array(image1)
     image2 = np.array(image2)
@@ -53,6 +69,38 @@ def compute_psnr(image1: Image, image2: Image) -> float:
 def compute_lpips(image1: Image, image2: Image) -> float:
     """
     Computes the learned perceptual image patch similarity between two images.
+
+    Args:
+        image1 (Image): The first image
+        image2 (Image): The second image
+
+    Returns:
+        float: The LPIPS score
     """
     loss_fn_alex = lpips.LPIPS(net="alex")
-    return loss_fn_alex(np.array(image1), np.array(image2))
+    
+    imgs = [image1, image2]
+    for i in range(2):
+        arr = np.array(imgs[i])
+        if arr.ndim == 2:
+            arr = np.repeat(arr[..., None], 3, axis=2)
+        t = torch.from_numpy(arr).permute(2, 0, 1).unsqueeze(0).float() / 255
+        t = t * 2 - 1
+        imgs[i] = t
+    
+    image1, image2 = imgs
+    return loss_fn_alex(image1, image2)
+   
+
+def compute_mse(image1: Image, image2: Image) -> float:
+    """
+    Computes the mean squared error between two images.
+
+    Args:
+        image1 (Image): The first image
+        image2 (Image): The second image
+
+    Returns:
+        float: The mean squared error
+    """
+    return mse(np.array(image1), np.array(image2))

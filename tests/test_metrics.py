@@ -11,5 +11,9 @@ def test_identical_images():
     image2 = image1.copy()
     
     warnings.filterwarnings("ignore", category=RuntimeWarning)
+    warnings.filterwarnings("ignore", category=UserWarning)
+    
     assert images.compute_ssim(image1, image2) == 1.0
     assert images.compute_psnr(image1, image2) == np.inf
+    assert images.compute_mse(image1, image2) == 0.0
+    assert images.compute_lpips(image1, image2) == 0.0
