@@ -5,12 +5,12 @@ from pydantic import BaseModel, ConfigDict
 from pydantic.types import conint
 from typing import Any, Type, Optional, TypeAlias, Annotated, Callable
 
-# NormType: TypeAlias = Optional[mpl.colors.BoundaryNorm | mpl.colors.Normalize]
 NormType: TypeAlias = Optional[mpl.colors.Normalize | mpl.colors.BoundaryNorm]
 CmapType: TypeAlias = Optional[str | Type[mpl.colors.Colormap]]
 ProjType: TypeAlias = Optional[Type[ccrs.Projection]]
 ExtentType: TypeAlias = Optional[tuple[float, float, float, float]]
 ArrayType: TypeAlias = Optional[np.ndarray]
+LevelsType: TypeAlias = Optional[dict[str, np.ndarray]]
 Channel = Annotated[int, conint(ge=0, le=3)]
 
 class BandpassContext(BaseModel):
@@ -26,7 +26,7 @@ class PlotterContext(BaseModel):
     center: tuple[float, float] | None = None
     scale: float | None                = None
     cmap: CmapType | None              = "viridis"
-    norm: Optional[NormType] | None              = None
+    norm: Optional[NormType] | None    = None
     vmin: float | None                 = None
     vmax: float | None                 = None
     interpolation: str | None          = None
@@ -38,6 +38,7 @@ class PlotterContext(BaseModel):
     pad_inches: float | None           = 0
     transparent: bool | None           = False
     inplace: bool | None               = False
+    levels: LevelsType | None          = None
 
 class BatchContext(BaseModel):
     fn_args: list[Any] | None        = None

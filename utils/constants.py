@@ -3,15 +3,18 @@ import numpy as np
 import matplotlib as mpl
 import cartopy.crs as ccrs
 
-ROOT_DIR: str                              = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-NATURAL_EARTH: str                         = "https://shadedrelief.com/natural3/ne3_data/16200/textures/2_no_clouds_16k.jpg"
-GSHHS_COASTLINES: str                      = "https://www.ngdc.noaa.gov/mgg/shorelines/data/gshhg/latest/gshhg-shp-2.3.7.zip"
-BORDERS: str                               = "https://geodata.ucdavis.edu/gadm/gadm4.1/gadm_410-gpkg.zip"
-ROADS: str                                 = "https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_roads.zip"
-CACHE_DIR: str                             = os.path.join(ROOT_DIR, "features", "cache")
+ROOT_DIR: str    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CACHE_DIR: str   = os.path.join(ROOT_DIR, "features", "cache")
+TEMP_DIR: str    = os.path.join(ROOT_DIR, "features", "tmp")
+WEIGHTS_DIR: str = os.path.join(ROOT_DIR, "processing", "weights")
+
+NATURAL_EARTH: str    = "https://shadedrelief.com/natural3/ne3_data/16200/textures/2_no_clouds_16k.jpg"
+GSHHS_COASTLINES: str = "https://www.ngdc.noaa.gov/mgg/shorelines/data/gshhg/latest/gshhg-shp-2.3.7.zip"
+BORDERS: str          = "https://geodata.ucdavis.edu/gadm/gadm4.1/gadm_410-gpkg.zip"
+ROADS: str            = "https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_roads.zip"
+
 TARGET_SHAPE: tuple[int, int]              = (2760, 5760)
 PREFERRED_DPI: int                         = 1500
-OCEAN_COLOR: str                           = mpl.colors.rgb2hex(np.array([190, 232, 255]) / 255)
 PROJECTION_MAP: dict[int, ccrs.Projection] = {
     0: ccrs.PlateCarree,
     1: ccrs.Orthographic,
@@ -19,6 +22,7 @@ PROJECTION_MAP: dict[int, ccrs.Projection] = {
     3: ccrs.Geostationary,
     4: ccrs.NearsidePerspective
 }
+
 VIEWS: tuple[str, ...]                     = (
     "northamerica_proj",
     "westpacific_proj",
@@ -45,7 +49,8 @@ VIEWS: tuple[str, ...]                     = (
     "westatlantic_mapset",
     "globe"
 )
-WEATHER_VARIABLES_SHORT: tuple[str, ...]    = (
+
+WEATHER_VARIABLES_SHORT: tuple[str, ...] = (
     "wind",
     "temp",
     "pressure",
@@ -59,7 +64,7 @@ WEATHER_VARIABLES_SHORT: tuple[str, ...]    = (
     "aerosols",
     "vort"
 )
-WEATHER_VARIABLES_LONG: tuple[str, ...]     = (
+WEATHER_VARIABLES_LONG: tuple[str, ...] = (
     "10m winds",
     "2m temperature",
     "sea level pressure",
@@ -73,9 +78,7 @@ WEATHER_VARIABLES_LONG: tuple[str, ...]     = (
     "aerosols",
     "vorticity"
 )
-AEROSOLS_EDGECOLOR: np.ndarray              = np.array([50, 50, 50]) / 255
-TEMP_DIR: str                               = os.path.join(ROOT_DIR, "features", "tmp")
-WEIGHTS_DIR: str                            = os.path.join(ROOT_DIR, "processing", "weights")
+
 PROJECTION_LIST: tuple[str, ...]            = (
     "PlateCarree"
     "AlbersEqualArea"
@@ -103,3 +106,6 @@ PROJECTION_LIST: tuple[str, ...]            = (
     "OSNI"
     "SouthPolarStereo"
 )
+
+OCEAN_COLOR: str               = mpl.colors.rgb2hex(np.array([190, 232, 255]) / 255)
+AEROSOLS_EDGECOLOR: np.ndarray = np.array([50, 50, 50]) / 255
