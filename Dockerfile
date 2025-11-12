@@ -8,6 +8,7 @@ RUN micromamba create --name earth --file environment.yml && \
 ENV ENV_NAME=earth
 
 COPY app.py .
+COPY driver.py .
 COPY observations.yml .
 COPY features ./features
 COPY metrics ./metrics
