@@ -10,11 +10,13 @@ ENV ENV_NAME=earth
 COPY app.py .
 COPY driver.py .
 COPY observations.yml .
+COPY views.json .
 COPY features ./features
 COPY metrics ./metrics
 COPY plotting ./plotting
 COPY processing ./processing
 COPY utils/ ./utils
 COPY video ./video
+COPY .streamlit ./.streamlit
 
 CMD ["streamlit", "run", "app.py"]
