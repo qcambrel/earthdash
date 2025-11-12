@@ -10,6 +10,12 @@ from memray import Tracker
 from driver import handler
 from utils.constants import MIN_DATE, MAX_DATE, VIEWS
 
+
+st.set_page_config(
+    page_title="Numbus",
+    page_icon="🌎"
+)
+
 st.title("Nimbus")
 st.markdown("Visualizing Earth systems")
 
@@ -22,6 +28,10 @@ with form:
     dataset = st.selectbox(
         "Choose a dataset",
         datasets.keys()
+    )
+
+    st.info(
+        "The maximum time delta between start and end dates is 5 days."
     )
 
     # minimum one day time delta between start and end dates
@@ -50,7 +60,7 @@ with form:
     interp  = st.checkbox("Interpolate frames")
     summary = st.checkbox("Summarize metrics")
 
-    auth_msg = st.warning(
+    auth_msg = st.info(
         "If your EarthData credentials are not set as environment variables, enter them below. " \
         "Otherwise, leave these following fields blank."
     )
@@ -63,6 +73,9 @@ with form:
         type="password"
     )
 
+    submitted = st.form_submit_button("Submit")
+
+if submitted:
     event = {
         "category": dataset,
         "dataset": datasets[dataset]["short name"],
@@ -76,5 +89,4 @@ with form:
         "auth_user": auth_user,
         "auth_pass": auth_pass
     }
-
-    submit = st.form_submit_button("Submit", on_click=handler, args=event)
+    handler(event)

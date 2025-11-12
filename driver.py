@@ -11,10 +11,15 @@ from plotting import plots, colormaps
 from processing.batching import batch_regrid, batch_resample, batch_plot 
 
 def handler(event: dict):
-    if not event["auth_user"]:
+    if (event["end"] - event["start"]).days > 5:
+        raise ValueError(
+            "Your time delta is too large. Reduce it to 5 days or less."
+        )
+    
+    if "EARTHDATA_USERNAME" not in os.environ:
         os.environ["EARTHDATA_USERNAME"] = event["auth_user"]
     
-    if not event["auth_pass"]:
+    if "EARTHDATA_PASSWORD" not in os.environ:
         os.environ["EARTHDATA_PASSWORD"] = event["auth_pass"]
 
     ea.login()
