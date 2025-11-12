@@ -24,32 +24,32 @@ PROJECTION_MAP: dict[int, ccrs.Projection] = {
     4: ccrs.NearsidePerspective
 }
 
-VIEWS: tuple[str, ...]                     = (
-    "northamerica_proj",
-    "westpacific_proj",
-    "goeseast_proj",
-    "goeswest_proj",
-    "meteosat8_proj",
-    "meteosat10_proj",
-    "himawari_proj",
-    "nh_proj",
-    "sh_proj",
-    "usa_mapset",
-    "centralusa_mapset",
-    "midatlantic_mapset",
-    "maryland_mapset",
-    "northatlantic_mapset",
-    "europe_mapset",
-    "asia_mapset",
-    "australia_mapset",
-    "africa_mapset",
-    "southamerica_mapset",
-    "northamerica_mapset",
-    "epacific_mapset",
-    "indianocean_mapset",
-    "westatlantic_mapset",
-    "globe"
-)
+VIEWS: dict[str, type[ccrs.Projection]] = {
+    "northamerica_proj": PROJECTION_MAP[4],
+    "westpacific_proj": PROJECTION_MAP[4],
+    "goeseast_proj": PROJECTION_MAP[3],
+    "goeswest_proj": PROJECTION_MAP[3],
+    "meteosat8_proj": PROJECTION_MAP[3],
+    "meteosat10_proj": PROJECTION_MAP[3],
+    "himawari_proj": PROJECTION_MAP[3],
+    "nh_proj": PROJECTION_MAP[4],
+    "sh_proj": PROJECTION_MAP[4],
+    "usa_mapset": PROJECTION_MAP[1],
+    "centralusa_mapset": PROJECTION_MAP[1],
+    "midatlantic_mapset": PROJECTION_MAP[2],
+    "maryland_mapset": PROJECTION_MAP[2],
+    "northatlantic_mapset": PROJECTION_MAP[2],
+    "europe_mapset": PROJECTION_MAP[2],
+    "asia_mapset": PROJECTION_MAP[2],
+    "australia_mapset": PROJECTION_MAP[2],
+    "africa_mapset": PROJECTION_MAP[2],
+    "southamerica_mapset": PROJECTION_MAP[2],
+    "northamerica_mapset": PROJECTION_MAP[2],
+    "epacific_mapset": PROJECTION_MAP[2],
+    "indianocean_mapset": PROJECTION_MAP[2],
+    "westatlantic_mapset": PROJECTION_MAP[2],
+    "globe": PROJECTION_MAP[0],
+}
 
 WEATHER_VARIABLES_SHORT: tuple[str, ...] = (
     "wind",

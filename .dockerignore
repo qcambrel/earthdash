@@ -7,6 +7,7 @@ processing/__pycache__
 tests/__pycache__
 utils/__pycache__
 video/__pycache__
+__pycache__
 .pytest_cache
 tests/.pytest_cache
 .DS_Store

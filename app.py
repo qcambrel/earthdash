@@ -7,7 +7,8 @@ import earthaccess as ea
 import cartopy.crs as ccrs
 from yaml import safe_load
 from memray import Tracker
-from utils.constants import MIN_DATE, MAX_DATE
+from driver import handler
+from utils.constants import MIN_DATE, MAX_DATE, VIEWS
 
 st.title("Nimbus")
 st.markdown("Visualizing Earth systems")
@@ -18,20 +19,29 @@ with form:
     with open("observations.yml", "r") as f:
         datasets = safe_load(f)
 
-    selected_dataset = st.selectbox(
+    dataset = st.selectbox(
         "Choose a dataset",
         datasets.keys()
     )
 
+    # minimum one day time delta between start and end dates
+    offset = datetime.timedelta(days=1)
+    
     start = st.date_input(
         "Start date",
         min_value=MIN_DATE,
+        max_value=(MAX_DATE - offset)
+    )
+
+    end = st.date_input(
+        "End date",
+        min_value=(MIN_DATE + offset),
         max_value=MAX_DATE
     )
-    end   = st.date_input(
-        "End date",
-        min_value=MIN_DATE,
-        max_value=MAX_DATE
+
+    view = st.selectbox(
+        "Choose a view",
+        VIEWS.keys()
     )
 
     zipimg  = st.checkbox("Zip frames")
@@ -45,12 +55,26 @@ with form:
         "Otherwise, leave these following fields blank."
     )
 
-    user_auth = st.text_input(
+    auth_user = st.text_input(
         "Enter your EarthData username"
     )
-    user_pass = st.text_input(
+    auth_pass = st.text_input(
         "Enter your EarthData password",
         type="password"
     )
 
-    submit = st.form_submit_button("Submit")
+    event = {
+        "category": dataset,
+        "dataset": datasets[dataset]["short name"],
+        "start": start,
+        "end": end,
+        "zipimg": zipimg,
+        "video": video,
+        "metrics": metrics,
+        "interp": interp,
+        "summary": summary,
+        "auth_user": auth_user,
+        "auth_pass": auth_pass
+    }
+
+    submit = st.form_submit_button("Submit", on_click=handler, args=event)

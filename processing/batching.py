@@ -21,6 +21,21 @@ def batch_regrid(batch: dict[str, np.ndarray], regridder: xe.Regridder) -> dict[
     batch["data"] = regridder(batch["data"])
     return batch
 
+def batch_resample(batch: dict[str, np.ndarray], resample: callable, shape: tuple[int, int]) -> dict[str, np.ndarray]:
+    """
+    Batch process for resampling.
+
+    Args:
+        batch (dict[str, np.ndarray]): Batch of data to resample
+        resample (callable): Function to use for resampling
+        shape (tuple[int, int]): Shape to resample to
+
+    Returns:
+        dict[str, np.ndarray]: Batch of resampled data
+    """
+    batch["data"] = resample(batch["data"], shape, center=True)
+    return batch
+
 def batch_plot(batch: dict[str, np.ndarray], plotter_cls: Plotter, cache_dir: str, context: PlotterContext) -> dict[str, list[dict[str, str]]]:
     """
     Batch process for plotting.
@@ -56,3 +71,17 @@ def batch_plot(batch: dict[str, np.ndarray], plotter_cls: Plotter, cache_dir: st
         result.append({"path": img_path, "status": "created"})
 
     return {"image": result}
+
+def batch_preprocess(batch: dict[str, np.ndarray], preprocess: callable) -> dict[str, np.ndarray]:
+    """
+    Batch process for preprocessing.
+
+    Args:
+        batch (dict[str, np.ndarray]): Batch of data to preprocess
+        preprocess (callable): Function to use for preprocessing
+
+    Returns:
+        dict[str, np.ndarray]: Batch of preprocessed data
+    """
+    batch["data"] = preprocess(batch["data"])
+    return batch
