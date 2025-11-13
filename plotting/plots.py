@@ -64,7 +64,13 @@ class WindPlotter(Plotter):
             return
         
         buffer = io.BytesIO()
-        plt.savefig(buffer, dpi=self.resolution, bbox_inches=self.bbox_inches, pad_inches=self.pad_inches, transparent=self.transparent)
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
         
         buffer.seek(0)
         plt.close()
@@ -137,7 +143,13 @@ class T2MPlotter(Plotter):
             return
         
         buffer = io.BytesIO()
-        plt.savefig(buffer, dpi=self.resolution, bbox_inches=self.bbox_inches, pad_inches=self.pad_inches, transparent=self.transparent)
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
         
         buffer.seek(0)
         plt.close()
@@ -158,7 +170,7 @@ class T2MPlotter(Plotter):
         month = timestamp[5:7]
         day   = timestamp[8:10]
         hour  = timestamp[11:13]
-        img.save(os.path.join(cache_dir, self.tag, "frames", "10m-winds", year, month, day, f"{hour}.png"))
+        img.save(os.path.join(cache_dir, self.tag, "frames", "t2m", year, month, day, f"{hour}.png"))
         buffer.close()
 
 class WeatherPlotter(Plotter):
@@ -223,7 +235,13 @@ class WeatherPlotter(Plotter):
             return
         
         buffer = io.BytesIO()
-        plt.savefig(buffer, dpi=self.resolution, bbox_inches=self.bbox_inches, pad_inches=self.pad_inches, transparent=self.transparent)
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
         
         buffer.seek(0)
         plt.close()
@@ -244,7 +262,7 @@ class WeatherPlotter(Plotter):
         month = timestamp[5:7]
         day   = timestamp[8:10]
         hour  = timestamp[11:13]
-        img.save(os.path.join(cache_dir, self.tag, "frames", "10m-winds", year, month, day, f"{hour}.png"))
+        img.save(os.path.join(cache_dir, self.tag, "frames", "wxtypes", year, month, day, f"{hour}.png"))
         buffer.close()
 
 class CAPEPlotter(Plotter):
@@ -295,7 +313,13 @@ class CAPEPlotter(Plotter):
             return
         
         buffer = io.BytesIO()
-        plt.savefig(buffer, dpi=self.resolution, bbox_inches=self.bbox_inches, pad_inches=self.pad_inches, transparent=self.transparent)
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
         
         buffer.seek(0)
         plt.close()
@@ -316,7 +340,7 @@ class CAPEPlotter(Plotter):
         month = timestamp[5:7]
         day   = timestamp[8:10]
         hour  = timestamp[11:13]
-        img.save(os.path.join(cache_dir, self.tag, "frames", "10m-winds", year, month, day, f"{hour}.png"))
+        img.save(os.path.join(cache_dir, self.tag, "frames", "cape", year, month, day, f"{hour}.png"))
         buffer.close()
 
 class Pressurelotter(Plotter):
@@ -368,7 +392,13 @@ class Pressurelotter(Plotter):
             return
         
         buffer = io.BytesIO()
-        plt.savefig(buffer, dpi=self.resolution, bbox_inches=self.bbox_inches, pad_inches=self.pad_inches, transparent=self.transparent)
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
         
         buffer.seek(0)
         plt.close()
@@ -389,7 +419,7 @@ class Pressurelotter(Plotter):
         month = timestamp[5:7]
         day   = timestamp[8:10]
         hour  = timestamp[11:13]
-        img.save(os.path.join(cache_dir, self.tag, "frames", "10m-winds", year, month, day, f"{hour}.png"))
+        img.save(os.path.join(cache_dir, self.tag, "frames", "slp", year, month, day, f"{hour}.png"))
         buffer.close()
 
 class AerosolPlotter(Plotter):
@@ -445,7 +475,13 @@ class AerosolPlotter(Plotter):
             return
         
         buffer = io.BytesIO()
-        plt.savefig(buffer, dpi=self.resolution, bbox_inches=self.bbox_inches, pad_inches=self.pad_inches, transparent=self.transparent)
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
         
         buffer.seek(0)
         plt.close()
@@ -466,7 +502,7 @@ class AerosolPlotter(Plotter):
         month = timestamp[5:7]
         day   = timestamp[8:10]
         hour  = timestamp[11:13]
-        img.save(os.path.join(cache_dir, self.tag, "frames", "10m-winds", year, month, day, f"{hour}.png"))
+        img.save(os.path.join(cache_dir, self.tag, "frames", "aerosols", year, month, day, f"{hour}.png"))
         buffer.close()
 
 class LWIRPlotter(Plotter):
@@ -520,7 +556,13 @@ class LWIRPlotter(Plotter):
             return
         
         buffer = io.BytesIO()
-        plt.savefig(buffer, dpi=self.resolution, bbox_inches=self.bbox_inches, pad_inches=self.pad_inches, transparent=self.transparent)
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
         
         buffer.seek(0)
         plt.close()
@@ -541,7 +583,7 @@ class LWIRPlotter(Plotter):
         month = timestamp[5:7]
         day   = timestamp[8:10]
         hour  = timestamp[11:13]
-        img.save(os.path.join(cache_dir, self.tag, "frames", "10m-winds", year, month, day, f"{hour}.png"))
+        img.save(os.path.join(cache_dir, self.tag, "frames", "infrared", year, month, day, f"{hour}.png"))
         buffer.close()
 
 class RadarPlotter(Plotter):
@@ -594,7 +636,13 @@ class RadarPlotter(Plotter):
             return
         
         buffer = io.BytesIO()
-        plt.savefig(buffer, dpi=self.resolution, bbox_inches=self.bbox_inches, pad_inches=self.pad_inches, transparent=self.transparent)
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
         
         buffer.seek(0)
         plt.close()
@@ -615,7 +663,7 @@ class RadarPlotter(Plotter):
         month = timestamp[5:7]
         day   = timestamp[8:10]
         hour  = timestamp[11:13]
-        img.save(os.path.join(cache_dir, self.tag, "frames", "10m-winds", year, month, day, f"{hour}.png"))
+        img.save(os.path.join(cache_dir, self.tag, "frames", "radar", year, month, day, f"{hour}.png"))
         buffer.close()
 
 class AccRainPlotter(Plotter):
@@ -627,10 +675,75 @@ class AccRainPlotter(Plotter):
     duration of precipitation events.
     """
     def __init__(self, data: np.ndarray, context: PlotterContext):
-        pass
+        self.data          = data
+        self.cmap          = context.cmap
+        self.norm          = context.norm
+        self.origin        = context.origin
+        self.interpolation = context.interpolation
+        self.extent        = context.extent
+        self.projection    = context.projection
+        self.transform     = context.transform
+        self.center        = context.center
+        self.resolution    = context.resolution
+        self.limit         = context.limit
+        self.tag           = context.tag
+        self.transparent   = context.transparent
+        self.bbox_inches   = context.bbox_inches
+        self.pad_inches    = context.pad_inches
+        self.inplace       = context.inplace
 
-    def render(self):
-        pass
+    def render(self, cache_dir: str, timestamp: str):
+        self.fig = plt.figure(dpi=self.resolution)
+        self.ax  = plt.axes(projection=self.projection(self.center[0], self.center[1]))
+        
+        if self.limit:
+            self.ax.set_extent(self.limit, self.transform())
+        
+        self.ax.imshow(
+            self.data,
+            cmap=self.cmap,
+            norm=self.norm,
+            origin=self.origin,
+            interpolation=self.interpolation,
+            extent=self.extent,
+            transform=self.transform()
+        )
+        
+        if self.inplace:
+            plt.show()
+            plt.close()
+            return
+        
+        buffer = io.BytesIO()
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
+        
+        buffer.seek(0)
+        plt.close()
+        
+        img = Image.open(buffer)
+
+        coasts  = os.path.join(cache_dir, self.tag, "features", "gshss.png")
+        borders = os.path.join(cache_dir, self.tag, "features", "borders.png")
+
+        if os.path.exists(coasts) and os.path.exists(borders):
+            img2 = Image.open(coasts)
+            img3 = Image.open(borders)
+
+            img.paste(img2, mask=img2)
+            img.paste(img3, mask=img3)
+
+        year  = timestamp[:4]
+        month = timestamp[5:7]
+        day   = timestamp[8:10]
+        hour  = timestamp[11:13]
+        img.save(os.path.join(cache_dir, self.tag, "frames", "acc-rain", year, month, day, f"{hour}.png"))
+        buffer.close()
 
 class AccSnowPlotter(Plotter):
     """
@@ -641,10 +754,75 @@ class AccSnowPlotter(Plotter):
     of snowfall events.
     """
     def __init__(self, data: np.ndarray, context: PlotterContext):
-        pass
+        self.data          = data
+        self.cmap          = context.cmap
+        self.norm          = context.norm
+        self.origin        = context.origin
+        self.interpolation = context.interpolation
+        self.extent        = context.extent
+        self.projection    = context.projection
+        self.transform     = context.transform
+        self.center        = context.center
+        self.resolution    = context.resolution
+        self.limit         = context.limit
+        self.tag           = context.tag
+        self.transparent   = context.transparent
+        self.bbox_inches   = context.bbox_inches
+        self.pad_inches    = context.pad_inches
+        self.inplace       = context.inplace
 
-    def render(self):
-        pass
+    def render(self, cache_dir: str, timestamp: str):
+        self.fig = plt.figure(dpi=self.resolution)
+        self.ax  = plt.axes(projection=self.projection(self.center[0], self.center[1]))
+        
+        if self.limit:
+            self.ax.set_extent(self.limit, self.transform())
+        
+        self.ax.imshow(
+            self.data,
+            cmap=self.cmap,
+            norm=self.norm,
+            origin=self.origin,
+            interpolation=self.interpolation,
+            extent=self.extent,
+            transform=self.transform()
+        )
+        
+        if self.inplace:
+            plt.show()
+            plt.close()
+            return
+        
+        buffer = io.BytesIO()
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
+        
+        buffer.seek(0)
+        plt.close()
+        
+        img = Image.open(buffer)
+
+        coasts  = os.path.join(cache_dir, self.tag, "features", "gshss.png")
+        borders = os.path.join(cache_dir, self.tag, "features", "borders.png")
+
+        if os.path.exists(coasts) and os.path.exists(borders):
+            img2 = Image.open(coasts)
+            img3 = Image.open(borders)
+
+            img.paste(img2, mask=img2)
+            img.paste(img3, mask=img3)
+
+        year  = timestamp[:4]
+        month = timestamp[5:7]
+        day   = timestamp[8:10]
+        hour  = timestamp[11:13]
+        img.save(os.path.join(cache_dir, self.tag, "frames", "acc-snow", year, month, day, f"{hour}.png"))
+        buffer.close()
 
 class TPWPlotter(Plotter):
     """
@@ -654,10 +832,75 @@ class TPWPlotter(Plotter):
     all the water in that column were precipitated as rain.
     """
     def __init__(self, data: np.ndarray, context: PlotterContext):
-        pass
+        self.data          = data
+        self.cmap          = context.cmap
+        self.norm          = context.norm
+        self.origin        = context.origin
+        self.interpolation = context.interpolation
+        self.extent        = context.extent
+        self.projection    = context.projection
+        self.transform     = context.transform
+        self.center        = context.center
+        self.resolution    = context.resolution
+        self.limit         = context.limit
+        self.tag           = context.tag
+        self.transparent   = context.transparent
+        self.bbox_inches   = context.bbox_inches
+        self.pad_inches    = context.pad_inches
+        self.inplace       = context.inplace
 
-    def render(self):
-        pass
+    def render(self, cache_dir: str, timestamp: str):
+        self.fig = plt.figure(dpi=self.resolution)
+        self.ax  = plt.axes(projection=self.projection(self.center[0], self.center[1]))
+        
+        if self.limit:
+            self.ax.set_extent(self.limit, self.transform())
+        
+        self.ax.imshow(
+            self.data,
+            cmap=self.cmap,
+            norm=self.norm,
+            origin=self.origin,
+            interpolation=self.interpolation,
+            extent=self.extent,
+            transform=self.transform()
+        )
+        
+        if self.inplace:
+            plt.show()
+            plt.close()
+            return
+        
+        buffer = io.BytesIO()
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
+        
+        buffer.seek(0)
+        plt.close()
+        
+        img = Image.open(buffer)
+
+        coasts  = os.path.join(cache_dir, self.tag, "features", "gshss.png")
+        borders = os.path.join(cache_dir, self.tag, "features", "borders.png")
+
+        if os.path.exists(coasts) and os.path.exists(borders):
+            img2 = Image.open(coasts)
+            img3 = Image.open(borders)
+
+            img.paste(img2, mask=img2)
+            img.paste(img3, mask=img3)
+
+        year  = timestamp[:4]
+        month = timestamp[5:7]
+        day   = timestamp[8:10]
+        hour  = timestamp[11:13]
+        img.save(os.path.join(cache_dir, self.tag, "frames", "tpw", year, month, day, f"{hour}.png"))
+        buffer.close()
 
 class VorticityPlotter(Plotter):
     """
@@ -671,8 +914,92 @@ class VorticityPlotter(Plotter):
     therefore includes a term due to the Earth's rotation, the Coriolis parameter.
     """
     def __init__(self, data: np.ndarray, context: PlotterContext):
-        pass
+        self.data          = data
+        self.cmap          = context.cmap
+        self.norm          = context.norm
+        self.origin        = context.origin
+        self.interpolation = context.interpolation
+        self.extent        = context.extent
+        self.projection    = context.projection
+        self.transform     = context.transform
+        self.center        = context.center
+        self.resolution    = context.resolution
+        self.limit         = context.limit
+        self.tag           = context.tag
+        self.transparent   = context.transparent
+        self.bbox_inches   = context.bbox_inches
+        self.pad_inches    = context.pad_inches
+        self.inplace       = context.inplace
+        self.levels        = context.levels
 
-    def render(self):
-        pass
+    def render(self, cache_dir: str, timestamp: str):
+        self.fig = plt.figure(dpi=self.resolution)
+        self.ax  = plt.axes(projection=self.projection(self.center[0], self.center[1]))
+        
+        if self.limit:
+            self.ax.set_extent(self.limit, self.transform())
+
+        data, heights = self.data
+        width, height = data.shape
+        
+        lons       = np.linspace(self.extent[0], self.extent[1], width)
+        lats       = np.linspace(self.extent[2], self.extent[3], height)
+        lons, lats = np.meshgrid(lons, lats)
+        
+        self.ax.imshow(
+            data,
+            cmap=self.cmap,
+            norm=self.norm,
+            origin=self.origin,
+            interpolation=self.interpolation,
+            extent=self.extent,
+            transform=self.transform()
+        )
+
+        heightsc = self.ax.contour(
+            lons,
+            lats,
+            heights,
+            transform=self.transform,
+            levels=self.levels,
+            colors="black",
+            linewidths=0.125
+        )
+        self.ax.clabel(heightsc, inline=True, fontsize=4)
+        
+        if self.inplace:
+            plt.show()
+            plt.close()
+            return
+        
+        buffer = io.BytesIO()
+        plt.savefig(
+            buffer,
+            dpi=self.resolution,
+            bbox_inches=self.bbox_inches,
+            pad_inches=self.pad_inches,
+            transparent=self.transparent
+        )
+        
+        buffer.seek(0)
+        plt.close()
+        
+        img = Image.open(buffer)
+
+        coasts  = os.path.join(cache_dir, self.tag, "features", "gshss.png")
+        borders = os.path.join(cache_dir, self.tag, "features", "borders.png")
+
+        if os.path.exists(coasts) and os.path.exists(borders):
+            img2 = Image.open(coasts)
+            img3 = Image.open(borders)
+
+            img.paste(img2, mask=img2)
+            img.paste(img3, mask=img3)
+
+        year  = timestamp[:4]
+        month = timestamp[5:7]
+        day   = timestamp[8:10]
+        hour  = timestamp[11:13]
+        img.save(os.path.join(cache_dir, self.tag, "frames", "vorticity", year, month, day, f"{hour}.png"))
+        buffer.close()
 
